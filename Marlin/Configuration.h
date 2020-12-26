@@ -71,7 +71,7 @@
 
 // Author info of this build printed to the host during boot and M115
 #define STRING_CONFIG_H_AUTHOR "gothrek22" // Who made the changes.
-//#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
+#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
  * *** VENDORS PLEASE READ ***
@@ -325,7 +325,7 @@
  * Enable and connect the power supply to the PS_ON_PIN.
  * Specify whether the power supply is active HIGH or active LOW.
  */
-#define PSU_CONTROL
+// #define PSU_CONTROL
 //#define PSU_NAME "Power Supply"
 
 #if ENABLED(PSU_CONTROL)
@@ -415,7 +415,7 @@
  *   998 : Dummy Table that ALWAYS reads 25°C or the temperature defined below.
  *   999 : Dummy Table that ALWAYS reads 100°C or the temperature defined below.
  */
-#define TEMP_SENSOR_0 1
+#define TEMP_SENSOR_0 5
 #define TEMP_SENSOR_1 0
 #define TEMP_SENSOR_2 0
 #define TEMP_SENSOR_3 0
@@ -499,12 +499,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    // defaults: #define DEFAULT_Kp 14.74
-    // defaults: #define DEFAULT_Ki 0.99
-    // defaults: #define DEFAULT_Kd 54.66
-    #define DEFAULT_Kp 17.77
-    #define DEFAULT_Ki 1.63
-    #define DEFAULT_Kd 48.38
+    #define DEFAULT_Kp 14.92
+    #define DEFAULT_Ki 1.33
+    #define DEFAULT_Kd 41.94
   #endif
 #endif // PIDTEMP
 
@@ -546,9 +543,9 @@
   // defaults: #define DEFAULT_bedKp 244.21
   // defaults: #define DEFAULT_bedKi 45.87
   // defaults: #define DEFAULT_bedKd 325.08
-  #define DEFAULT_bedKp 70.40
-  #define DEFAULT_bedKi 8.11
-  #define DEFAULT_bedKd 407.34
+  #define DEFAULT_bedKp 86.32
+  #define DEFAULT_bedKi 12.90
+  #define DEFAULT_bedKd 385.08
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
 
@@ -577,7 +574,7 @@
  * Note: For Bowden Extruders make this large enough to allow load/unload.
  */
 #define PREVENT_LENGTHY_EXTRUDE
-#define EXTRUDE_MAXLENGTH 420
+#define EXTRUDE_MAXLENGTH 300
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -991,7 +988,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 28, -33, -3.16 }
+#define NOZZLE_TO_PROBE_OFFSET { 26, -31, -4.19 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1128,7 +1125,7 @@
 
 // The size of the print bed
 #define X_BED_SIZE 300
-#define Y_BED_SIZE 310
+#define Y_BED_SIZE 300
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS -2
@@ -1316,7 +1313,7 @@
   //========================= Unified Bed Leveling ============================
   //===========================================================================
 
-  //#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
+  #define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
 
   #define MESH_INSET 1              // Set Mesh bounds as an inset region of the bed
   #define GRID_MAX_POINTS_X 10      // Don't use more than 15 points per axis, implementation limited.
@@ -1518,7 +1515,7 @@
 #define PREHEAT_2_FAN_SPEED   0 // Value from 0 to 255
 
 #define PREHEAT_3_LABEL       "PETG"
-#define PREHEAT_3_TEMP_HOTEND 250
+#define PREHEAT_3_TEMP_HOTEND 235
 #define PREHEAT_3_TEMP_BED    85
 #define PREHEAT_3_FAN_SPEED   0 // Value from 0 to 255
 
