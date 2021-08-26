@@ -499,9 +499,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp 14.92
-    #define DEFAULT_Ki 1.33
-    #define DEFAULT_Kd 41.94
+    #define DEFAULT_Kp 17.13
+    #define DEFAULT_Ki 1.75
+    #define DEFAULT_Kd 41.82
   #endif
 #endif // PIDTEMP
 
@@ -543,9 +543,9 @@
   // defaults: #define DEFAULT_bedKp 244.21
   // defaults: #define DEFAULT_bedKi 45.87
   // defaults: #define DEFAULT_bedKd 325.08
-  #define DEFAULT_bedKp 86.32
-  #define DEFAULT_bedKi 12.90
-  #define DEFAULT_bedKd 385.08
+  #define DEFAULT_bedKp 65.12
+  #define DEFAULT_bedKi 8.70
+  #define DEFAULT_bedKd 324.82
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
 
@@ -988,7 +988,7 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 26, -31, -4.19 }
+#define NOZZLE_TO_PROBE_OFFSET { 26, -31, -3.17 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
@@ -1128,7 +1128,7 @@
 #define Y_BED_SIZE 300
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
-#define X_MIN_POS -2
+#define X_MIN_POS 0
 #define Y_MIN_POS -5
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
