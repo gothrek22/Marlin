@@ -35,7 +35,7 @@
  *
  * Advanced settings can be found in Configuration_adv.h
  */
-#define CONFIGURATION_H_VERSION 020007
+#define CONFIGURATION_H_VERSION 020091
 
 //===========================================================================
 //============================= Getting Started =============================
@@ -499,9 +499,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp 17.13
-    #define DEFAULT_Ki 1.75
-    #define DEFAULT_Kd 41.82
+    #define DEFAULT_Kp 16.14
+    #define DEFAULT_Ki 1.32
+    #define DEFAULT_Kd 49.35
   #endif
 #endif // PIDTEMP
 
@@ -543,9 +543,9 @@
   // defaults: #define DEFAULT_bedKp 244.21
   // defaults: #define DEFAULT_bedKi 45.87
   // defaults: #define DEFAULT_bedKd 325.08
-  #define DEFAULT_bedKp 65.12
-  #define DEFAULT_bedKi 8.70
-  #define DEFAULT_bedKd 324.82
+  #define DEFAULT_bedKp 80.72
+  #define DEFAULT_bedKi 10.90
+  #define DEFAULT_bedKd 398.35
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
 
@@ -743,7 +743,7 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 436 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 836 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -1343,7 +1343,7 @@
  * Add a bed leveling sub-menu for ABL or MBL.
  * Include a guided procedure if manual probing is enabled.
  */
-#define LCD_BED_LEVELING
+// #define LCD_BED_LEVELING
 
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
@@ -1352,7 +1352,7 @@
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-#define LEVEL_BED_CORNERS
+// #define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
   #define LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
@@ -1731,7 +1731,7 @@
  * SD Card support is disabled by default. If your controller has an SD slot,
  * you must uncomment the following option or it won't work.
  */
-#define SDSUPPORT
+// #define SDSUPPORT
 
 /**
  * SD CARD: SPI SPEED
@@ -1992,7 +1992,7 @@
 // RepRapDiscount FULL GRAPHIC Smart Controller
 // https://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
-#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+// #define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 //
 // ReprapWorld Graphical LCD
