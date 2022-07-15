@@ -632,7 +632,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#define E0_AUTO_FAN_PIN -1
+#define E0_AUTO_FAN_PIN P2_04
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -644,7 +644,7 @@
 #define COOLER_AUTO_FAN_PIN -1
 
 #define EXTRUDER_AUTO_FAN_TEMPERATURE 50
-#define EXTRUDER_AUTO_FAN_SPEED 255   // 255 == full speed
+#define EXTRUDER_AUTO_FAN_SPEED 192   // 255 == full speed
 #define CHAMBER_AUTO_FAN_TEMPERATURE 30
 #define CHAMBER_AUTO_FAN_SPEED 255
 #define COOLER_AUTO_FAN_TEMPERATURE 18
@@ -691,7 +691,7 @@
  * The multiplexer is automatically switched at tool-change.
  * Set FANMUX[012]_PINs below for up to 2, 4, or 8 multiplexed fans.
  */
-#define FANMUX0_PIN -1
+#define FANMUX0_PIN P1_26
 #define FANMUX1_PIN -1
 #define FANMUX2_PIN -1
 
@@ -868,7 +868,7 @@
  * the position of the toolhead relative to the workspace.
  */
 
-//#define SENSORLESS_BACKOFF_MM  { 2, 2, 0 }  // (linear=mm, rotational=°) Backoff from endstops before sensorless homing
+#define SENSORLESS_BACKOFF_MM  { 2, 2, 0 }  // (linear=mm, rotational=°) Backoff from endstops before sensorless homing
 
 #define HOMING_BUMP_MM      { 5, 5, 2 }       // (linear=mm, rotational=°) Backoff from endstops after first bump
 #define HOMING_BUMP_DIVISOR { 2, 2, 4 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
@@ -901,7 +901,7 @@
 
   // Safety: The probe needs time to recognize the command.
   //         Minimum command delay (ms). Enable and increase if needed.
-  //#define BLTOUCH_DELAY 500
+  #define BLTOUCH_DELAY 200
 
   /**
    * Settings for BLTOUCH Classic 1.2, 1.3 or BLTouch Smart 1.0, 2.0, 2.2, 3.0, 3.1, and most clones:
@@ -927,7 +927,7 @@
    * differs, a mode set eeprom write will be completed at initialization.
    * Use the option below to force an eeprom write to a V3.1 probe regardless.
    */
-  //#define BLTOUCH_SET_5V_MODE
+  #define BLTOUCH_SET_5V_MODE
 
   /**
    * Safety: Activate if connecting a probe with an unknown voltage mode.
@@ -945,7 +945,7 @@
    *
    * Set the default state here, change with 'M401 S' or UI, use M500 to save, M502 to reset.
    */
-  //#define BLTOUCH_HS_MODE true
+  #define BLTOUCH_HS_MODE true
 
   // Safety: Enable voltage mode settings in the LCD menu.
   //#define BLTOUCH_LCD_VOLTAGE_MENU
@@ -958,7 +958,7 @@
  * Z Steppers Auto-Alignment
  * Add the G34 command to align multiple Z steppers using a bed probe.
  */
-//#define Z_STEPPER_AUTO_ALIGN
+#define Z_STEPPER_AUTO_ALIGN
 #if ENABLED(Z_STEPPER_AUTO_ALIGN)
   /**
    * Define probe X and Y positions for Z1, Z2 [, Z3 [, Z4]]
@@ -1051,7 +1051,7 @@
 
 // @section motion
 
-#define AXIS_RELATIVE_MODES { false, false, false, false }
+#define AXIS_RELATIVE_MODES { false, false, false, true }
 
 // Add a Duplicate option for well-separated conjoined nozzles
 //#define MULTI_NOZZLE_DUPLICATION
@@ -1105,7 +1105,7 @@
  * See https://hydraraptor.blogspot.com/2010/12/frequency-limit.html
  * Use M201 F<freq> G<min%> to change limits at runtime.
  */
-//#define XY_FREQUENCY_LIMIT      10 // (Hz) Maximum frequency of small zigzag infill moves. Set with M201 F<hertz>.
+#define XY_FREQUENCY_LIMIT      10 // (Hz) Maximum frequency of small zigzag infill moves. Set with M201 F<hertz>.
 #ifdef XY_FREQUENCY_LIMIT
   #define XY_FREQUENCY_MIN_PERCENT 5 // (percent) Minimum FR percentage to apply. Set with M201 G<min%>.
 #endif
@@ -1226,7 +1226,7 @@
  * vibration and surface artifacts. The algorithm adapts to provide the best possible step smoothing at the
  * lowest stepping frequencies.
  */
-//#define ADAPTIVE_STEP_SMOOTHING
+#define ADAPTIVE_STEP_SMOOTHING
 
 /**
  * Custom Microstepping
@@ -1519,7 +1519,7 @@
    * an option on the LCD screen to continue the print from the last-known
    * point in the file.
    */
-  //#define POWER_LOSS_RECOVERY
+  #define POWER_LOSS_RECOVERY
   #if ENABLED(POWER_LOSS_RECOVERY)
     #define PLR_ENABLED_DEFAULT   false // Power Loss Recovery enabled by default. (Set with 'M413 Sn' & M500)
     //#define BACKUP_POWER_SUPPLY       // Backup power / UPS to move the steppers on power loss
@@ -1565,7 +1565,7 @@
    *  - SDSORT_CACHE_NAMES will retain the sorted file listing in RAM. (Expensive!)
    *  - SDSORT_DYNAMIC_RAM only uses RAM when the SD menu is visible. (Use with caution!)
    */
-  //#define SDCARD_SORT_ALPHA
+  #define SDCARD_SORT_ALPHA
 
   // SD Card Sorting options
   #if ENABLED(SDCARD_SORT_ALPHA)
@@ -1584,11 +1584,11 @@
   // LCD's font must contain the characters. Check your selected LCD language.
   //#define UTF_FILENAME_SUPPORT
 
-  //#define LONG_FILENAME_HOST_SUPPORT    // Get the long filename of a file/folder with 'M33 <dosname>' and list long filenames with 'M20 L'
+  #define LONG_FILENAME_HOST_SUPPORT    // Get the long filename of a file/folder with 'M33 <dosname>' and list long filenames with 'M20 L'
   //#define LONG_FILENAME_WRITE_SUPPORT   // Create / delete files with long filenames via M28, M30, and Binary Transfer Protocol
   //#define M20_TIMESTAMP_SUPPORT         // Include timestamps by adding the 'T' flag to M20 commands
 
-  //#define SCROLL_LONG_FILENAMES         // Scroll long filenames in the SD card menu
+  #define SCROLL_LONG_FILENAMES         // Scroll long filenames in the SD card menu
 
   //#define SD_ABORT_NO_COOLDOWN          // Leave the heaters on after Stop Print (not recommended!)
 
@@ -1689,7 +1689,7 @@
    *
    * :[ 'LCD', 'ONBOARD', 'CUSTOM_CABLE' ]
    */
-  //#define SDCARD_CONNECTION LCD
+  #define SDCARD_CONNECTION ONBOARD
 
   // Enable if SD detect is rendered useless (e.g., by using an SD extender)
   //#define NO_SD_DETECT
@@ -2012,16 +2012,16 @@
  *
  * Warning: Does not respect endstops!
  */
-//#define BABYSTEPPING
+#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
   //#define INTEGRATED_BABYSTEPPING         // EXPERIMENTAL integration of babystepping into the Stepper ISR
-  //#define BABYSTEP_WITHOUT_HOMING
-  //#define BABYSTEP_ALWAYS_AVAILABLE       // Allow babystepping at all times (not just during movement).
+  #define BABYSTEP_WITHOUT_HOMING
+  #define BABYSTEP_ALWAYS_AVAILABLE       // Allow babystepping at all times (not just during movement).
   //#define BABYSTEP_XY                     // Also enable X/Y Babystepping. Not supported on DELTA!
   #define BABYSTEP_INVERT_Z false           // Change if Z babysteps should go the other way
   //#define BABYSTEP_MILLIMETER_UNITS       // Specify BABYSTEP_MULTIPLICATOR_(XY|Z) in mm instead of micro-steps
-  #define BABYSTEP_MULTIPLICATOR_Z  1       // (steps or mm) Steps or millimeter distance for each Z babystep
-  #define BABYSTEP_MULTIPLICATOR_XY 1       // (steps or mm) Steps or millimeter distance for each XY babystep
+  #define BABYSTEP_MULTIPLICATOR_Z  10       // (steps or mm) Steps or millimeter distance for each Z babystep
+  #define BABYSTEP_MULTIPLICATOR_XY 10       // (steps or mm) Steps or millimeter distance for each XY babystep
 
   //#define DOUBLECLICK_FOR_Z_BABYSTEPPING  // Double-click on the Status Screen for Z Babystepping.
   #if ENABLED(DOUBLECLICK_FOR_Z_BABYSTEPPING)
@@ -2033,9 +2033,9 @@
     #endif
   #endif
 
-  //#define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
+  #define BABYSTEP_DISPLAY_TOTAL          // Display total babysteps since last G28
 
-  //#define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
+  #define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
     //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
     //#define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
@@ -2059,18 +2059,13 @@
  *
  * See https://marlinfw.org/docs/features/lin_advance.html for full instructions.
  */
-//#define LIN_ADVANCE
+#define LIN_ADVANCE
 #if ENABLED(LIN_ADVANCE)
-  #if ENABLED(DISTINCT_E_FACTORS)
-    #define ADVANCE_K { 0.22 }    // (mm) Compression length per 1mm/s extruder speed, per extruder
-  #else
-    #define ADVANCE_K 0.22        // (mm) Compression length applying to all extruders
-  #endif
-  //#define ADVANCE_K_EXTRA       // Add a second linear advance constant, configurable with M900 L.
-  //#define LA_DEBUG              // Print debug information to serial during operation. Disable for production use.
-  //#define EXPERIMENTAL_SCURVE   // Allow S-Curve Acceleration to be used with LA.
-  //#define ALLOW_LOW_EJERK       // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
-  //#define EXPERIMENTAL_I2S_LA   // Allow I2S_STEPPER_STREAM to be used with LA. Performance degrades as the LA step rate reaches ~20kHz.
+  //#define EXTRA_LIN_ADVANCE_K // Enable for second linear advance constants
+  #define LIN_ADVANCE_K 0.2     // Unit: mm compression per 1mm/s extruder speed
+  //#define LA_DEBUG            // If enabled, this will generate debug information output over USB.
+  #define EXPERIMENTAL_SCURVE // Enable this option to permit S-Curve Acceleration
+  #define ALLOW_LOW_EJERK     // Allow a DEFAULT_EJERK value of <10. Recommended for direct drive hotends.
 #endif
 
 // @section leveling
@@ -2145,7 +2140,7 @@
  * Repeatedly attempt G29 leveling until it succeeds.
  * Stop after G29_MAX_RETRIES attempts.
  */
-//#define G29_RETRY_AND_RECOVER
+#define G29_RETRY_AND_RECOVER
 #if ENABLED(G29_RETRY_AND_RECOVER)
   #define G29_MAX_RETRIES 3
   #define G29_HALT_ON_FAILURE
@@ -2247,7 +2242,7 @@
 #endif
 
 // G5 Bézier Curve Support with XYZE destination and IJPQ offsets
-//#define BEZIER_CURVE_SUPPORT        // Requires ~2666 bytes
+#define BEZIER_CURVE_SUPPORT        // Requires ~2666 bytes
 
 #if EITHER(ARC_SUPPORT, BEZIER_CURVE_SUPPORT)
   //#define CNC_WORKSPACE_PLANES      // Allow G2/G3/G5 to operate in XY, ZX, or YZ planes
@@ -2347,7 +2342,7 @@
 
 // The ASCII buffer for serial input
 #define MAX_CMD_SIZE 96
-#define BUFSIZE 4
+#define BUFSIZE 8
 
 // Transmission to Host Buffer Size
 // To save 386 bytes of flash (and TX_BUFFER_SIZE+3 bytes of RAM) set to 0.
@@ -2394,7 +2389,7 @@
  * Currently handles M108, M112, M410, M876
  * NOTE: Not yet implemented for all platforms.
  */
-//#define EMERGENCY_PARSER
+#define EMERGENCY_PARSER
 
 /**
  * Realtime Reporting (requires EMERGENCY_PARSER)
@@ -2587,7 +2582,7 @@
  *
  * Enable PARK_HEAD_ON_PAUSE to add the G-code M125 Pause and Park.
  */
-//#define ADVANCED_PAUSE_FEATURE
+#define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
   #define PAUSE_PARK_RETRACT_FEEDRATE         60  // (mm/s) Initial retract feedrate.
   #define PAUSE_PARK_RETRACT_LENGTH            2  // (mm) Initial retract.
@@ -3134,7 +3129,7 @@
    * Define your own with:
    * { <off_time[1..15]>, <hysteresis_end[-3..12]>, hysteresis_start[1..8] }
    */
-  #define CHOPPER_TIMING CHOPPER_DEFAULT_12V        // All axes (override below)
+  #define CHOPPER_TIMING CHOPPER_DEFAULT_24V        // All axes (override below)
   //#define CHOPPER_TIMING_X  CHOPPER_TIMING        // For X Axes (override below)
   //#define CHOPPER_TIMING_X2 CHOPPER_TIMING_X
   //#define CHOPPER_TIMING_Y  CHOPPER_TIMING        // For Y Axes (override below)
@@ -3188,7 +3183,7 @@
    * STEALTHCHOP_(XY|Z|E) must be enabled to use HYBRID_THRESHOLD.
    * M913 X/Y/Z/E to live tune the setting
    */
-  //#define HYBRID_THRESHOLD
+  #define HYBRID_THRESHOLD
 
   #define X_HYBRID_THRESHOLD     100  // [mm/s]
   #define X2_HYBRID_THRESHOLD    100
@@ -3239,13 +3234,13 @@
    * Comment *_STALL_SENSITIVITY to disable sensorless homing for that axis.
    * @section tmc/stallguard
    */
-  //#define SENSORLESS_HOMING // StallGuard capable drivers only
+  #define SENSORLESS_HOMING // StallGuard capable drivers only
 
   #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
     // TMC2209: 0...255. TMC2130: -64...63
-    #define X_STALL_SENSITIVITY  8
+    #define X_STALL_SENSITIVITY  150
     #define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
-    #define Y_STALL_SENSITIVITY  8
+    #define Y_STALL_SENSITIVITY  100
     #define Y2_STALL_SENSITIVITY Y_STALL_SENSITIVITY
     //#define Z_STALL_SENSITIVITY  8
     //#define Z2_STALL_SENSITIVITY Z_STALL_SENSITIVITY
@@ -3279,7 +3274,7 @@
    * Beta feature!
    * Create a 50/50 square wave step pulse optimal for stepper drivers.
    */
-  //#define SQUARE_WAVE_STEPPING
+  #define SQUARE_WAVE_STEPPING
 
   /**
    * Enable M122 debugging command for TMC stepper drivers.
@@ -3949,7 +3944,7 @@
  *
  * Implement M486 to allow Marlin to skip objects
  */
-//#define CANCEL_OBJECTS
+#define CANCEL_OBJECTS
 #if ENABLED(CANCEL_OBJECTS)
   #define CANCEL_OBJECTS_REPORTING // Emit the current object as a status message
 #endif
